@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <i class="bi bi-tools me-2"></i> My Multi-Tool Hub
+            </a>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <h1 class="mb-4">Dictionary</h1>
+        <p class="text-center"><a href="/" class="btn btn-secondary btn-sm"><i class="bi bi-arrow-left-short"></i> Back to Home</a></p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="/dictionary" method="POST">
+            <div class="mb-3">
+                <label for="word" class="form-label">Enter a Word:</label>
+                <input type="text" class="form-control" id="word" name="word" placeholder="e.g., example" required value="{{ request.form.word if request.form else '' }}">
+            </div>
+            <button type="submit" class="btn btn-success"><i class="bi bi-book me-2"></i> Look Up</button>
+        </form>
+
+        {% if word_info %}
+        <div class="dictionary-result">
+            <h2 class="mb-3">Definition for "{{ word_info[0].word }}":</h2>
+            {% for entry in word_info %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    {% if entry.phonetic %}
+                    <p class="card-subtitle mb-2 text-muted"><strong>Phonetic:</strong> {{ entry.phonetic }}</p>
+                    {% endif %}
+                    <h5 class="card-title">{{ entry.partOfSpeech | title }}</h5>
+                    <p class="card-text"><strong>Definition:</strong> {{ entry.definition }}</p>
+                    {% if entry.example %}
+                    <p class="card-text"><small class="text-muted"><em>Example:</em> {{ entry.example }}</small></p>
+                    {% endif %}
+                    {% if entry.synonyms %}
+                    <p class="card-text"><strong>Synonyms:</strong> {{ entry.synonyms | join(', ') }}</p>
+                    {% endif %}
+                    {% if entry.antonyms %}
+                    <p class="card-text"><strong>Antonyms:</strong> {{ entry.antonyms | join(', ') }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; {{ current_year }} My Multi-Tool Hub. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

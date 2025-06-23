@@ -1,0 +1,196 @@
+/* General Body and Container Styling */
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #f0f2f5 0%, #e0e6ea 100%); /* Subtle gradient background */
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 15px; /* Smooth curves */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    flex-grow: 1; /* Allow content to grow */
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #007bff; /* Primary blue for header */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: #fff !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #007bff; /* Primary blue for headings */
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Tool Cards on Homepage */
+.tool-card {
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* Ensure cards are same height in a row */
+}
+
+.tool-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.tool-card .card-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #0056b3;
+}
+
+.tool-card .card-text {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.tool-card .card-footer {
+    background-color: transparent;
+    border-top: none;
+    padding-top: 0;
+}
+
+/* Form Elements */
+.form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+.form-control, .form-select {
+    border-radius: 8px; /* Slightly rounded inputs */
+    border: 1px solid #ced4da;
+    padding: 0.75rem 1rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Inner shadow for depth */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+    transform: translateY(-2px);
+}
+
+/* Result Display */
+.qr-result, .thumbnail-result, .dp-result, .weather-result, .transcription-result, .dictionary-result, .currency-result {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: #e9f5ff; /* Light blue background for results */
+    border-radius: 12px;
+    border: 1px solid #cce5ff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.qr-result img, .thumbnail-result img, .dp-result img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+audio {
+    width: 100%;
+    max-width: 400px;
+    margin: 15px auto;
+    display: block;
+}
+
+/* Footer Styling */
+.footer {
+    padding: 20px;
+    background-color: #343a40; /* Dark background */
+    color: #f8f9fa;
+    text-align: center;
+    margin-top: auto; /* Push to bottom */
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+.mt-4 { margin-top: 1.5rem !important; }
+.mb-4 { margin-bottom: 1.5rem !important; }
+.my-3 { margin-top: 1rem !important; margin-bottom: 1rem !important; }
+.ms-2 { margin-left: 0.5rem !important; }
+
+/* Font Awesome / Bootstrap Icons Integration (if using) */
+.tool-card .card-title i {
+    margin-right: 10px;
+    color: #007bff; /* Icon color */
+}
+
+/* Flash Messages */
+.alert {
+    border-radius: 8px;
+    font-weight: 500;
+}
